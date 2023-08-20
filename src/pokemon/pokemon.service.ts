@@ -84,8 +84,19 @@ export class PokemonService {
     // await pokemon.deleteOne();
     // return { id };
 
-    const result = await this.pokemonModel.findByIdAndDelete(id);
+    /// segundo metodo
+    // const result = await this.pokemonModel.findByIdAndDelete(id);
 
+    /// tercer metodo
+    /// la siguiente linea de codigo es como un: delete * from pokemon (borra todo)
+    // const result = await this.pokemonModel.deleteMany();
+
+
+    const { deletedCount } = await this.pokemonModel.deleteOne({ _id: id });
+    if (deletedCount === 0) {
+      throw new BadRequestException(`Pokemon with id: ${id} not found`);
+    }
+    return;
   }
 
   /// siempre hacer un throw

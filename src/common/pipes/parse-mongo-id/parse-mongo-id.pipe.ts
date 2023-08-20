@@ -5,7 +5,7 @@ import { isValidObjectId } from 'mongoose';
 export class ParseMongoIdPipe implements PipeTransform {
 
   transform(value: string, metadata: ArgumentMetadata) {
-    console.log({ value, metadata });
+    // console.log({ value, metadata });
 
     /// objeto balido para mongo
     if (!isValidObjectId(value)) {
