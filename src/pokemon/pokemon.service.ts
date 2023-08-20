@@ -62,8 +62,28 @@ export class PokemonService {
     return pokemon;
   }
 
-  update(id: number, updatePokemonDto: UpdatePokemonDto) {
-    return `This action updates a #${id} pokemon`;
+  async update(term: string, updatePokemonDto: UpdatePokemonDto) {
+
+    const pokemon = await this.findOne(term);
+
+    if (updatePokemonDto.name)
+      updatePokemonDto.name = updatePokemonDto.name.toLowerCase();
+
+    try {
+
+      /// esto retorna la serializacion del objeto en la DB
+      // const updatedPokemon = await pokemon.updateOne(updatePokemonDto, { new: true });
+      // return updatedPokemon;
+
+      await pokemon.updateOne(updatePokemonDto, { new: true });
+      /// esparcimos el objeto pokemon y sobreescribimos con el DTO
+      return { ...pokemon.toJSON(), ...updatePokemonDto };
+    } catch (error) {
+
+    }
+
+
+
   }
 
   remove(id: number) {
