@@ -43,19 +43,16 @@ export class PokemonService {
     if (!isNaN(+term)) {
       // si esto es un numero
       pokemon = await this.pokemonModel.findOne({ no: term });
-      return pokemon;
     }
 
     // MongoID
     if (isValidObjectId(term)) {
       pokemon = await this.pokemonModel.findById(term);
-      return pokemon;
     }
 
     // Name
     if (!pokemon) {
       pokemon = await this.pokemonModel.findOne({ name: term.toLowerCase().trim() });
-      return pokemon;
     }
 
     if (!pokemon) {
