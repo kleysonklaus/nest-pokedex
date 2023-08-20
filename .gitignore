@@ -1,5 +1,7 @@
 # ignorar la carpeta de mongo (DB)
+/mongo/
 /mongo
+.mongo
 
 # compiled output
 /dist
