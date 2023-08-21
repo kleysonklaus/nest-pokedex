@@ -17,29 +17,27 @@ export class SeedService {
   ) { }
 
   async executeSeed() {
+
+    // limpiamos todo
+    // await this.pokemonModel.deleteMany({});
+
     // console.log(fetch)
     const _url: string = 'https://pokeapi.co/api/v2/pokemon?limit=10';
     const { data } = await this.axios.get<PokeResponse>(_url);
 
-    const pokemons = data.results.forEach(async ({ name, url }) => {
-      const segments = url.split('/');
+    const insertPromisesArray = [];
 
+    data.results.forEach(({ name, url }) => {
+      const segments = url.split('/');
       const no = +segments[segments.length - 2];
 
-      // console.log({ name, no });
-      const newPokemon: CreatePokemonDto = {
-        no,
-        name
-      };
-
-      await this.pokemonModel.create(newPokemon);
-      // return newPokemon;
+      insertPromisesArray.push(
+        this.pokemonModel.create({ name, no })
+      );
     });
 
-    console.log(data.results);
+    await Promise.all(insertPromisesArray);
 
-    // await this.pokemonModel.createCollection(pokemons);
-
-    return data.results;
+    return "seed executed";
   }
 }
