@@ -11,6 +11,15 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true, // extrae la data en una white list las que tengan DTO
       forbidNonWhitelisted: true, // obliga a no mandar mas propiedades de las necesarias
+
+      transform: true,                // transforma las querys que viene a los DTO con sus formatos
+      transformOptions: {
+        enableImplicitConversion: true
+      }
+
+      //
+
+
     }),
   );
 
