@@ -4,10 +4,11 @@ import { SeedController } from './seed.controller';
 import { PokemonService } from 'src/pokemon/pokemon.service';
 import { Pokemon } from 'src/pokemon/entities/pokemon.entity';
 import { PokemonModule } from 'src/pokemon/pokemon.module';
+import { CommonModule } from 'src/common/common.module';
 
 @Module({
   controllers: [SeedController],
   providers: [SeedService, PokemonService],
-  imports: [PokemonModule],
+  imports: [PokemonModule, CommonModule],
 })
 export class SeedModule { }
