@@ -2,6 +2,7 @@
 /mongo/
 /mongo
 .mongo
+.env
 
 # compiled output
 /dist
