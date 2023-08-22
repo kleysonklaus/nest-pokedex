@@ -8,7 +8,9 @@ import { CommonModule } from 'src/common/common.module';
 
 @Module({
   controllers: [SeedController],
-  providers: [SeedService, PokemonService],
+  /// esto me dio problemas para el config service
+  // providers: [SeedService, PokemonService],
+  providers: [SeedService],
   imports: [PokemonModule, CommonModule],
 })
 export class SeedModule { }
