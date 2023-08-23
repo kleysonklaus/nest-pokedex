@@ -45,3 +45,20 @@ http://localhost:3000/api/v2/seed
 
 * MongoDB
 * Nest
+
+# notas
+
+Heroku - redeploy sin cambios:
+
+```
+git commit --allow-empty -m "tigger Heroku deploy"
+git push heroku <master|main>
+```
+
+Mi despliegue:
+fue en: railway.app
+```
+https://nest-pokedex-production-255b.up.railway.app/
+
+/api/v2/seed
+```
