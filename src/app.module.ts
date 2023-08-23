@@ -38,6 +38,7 @@ import { JoiValidationSchema } from './config/joi.validation';
 export class AppModule {
 
   constructor() {
+    /// aqui se muestra todas las variables de entorno
     // console.log(process.env);
   }
 }
