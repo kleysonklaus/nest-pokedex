@@ -3,6 +3,7 @@
 /mongo
 .mongo
 .env
+.env.prod
 
 # compiled output
 /dist
